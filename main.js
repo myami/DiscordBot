@@ -22,7 +22,7 @@ client.on("message", (message) => {
     let hours = args[3]; // format 24hours
     let text = "{'Name'"+":" + name + ","+ "\n" + "'Hours'"+":" + date + ","+"\n" +"'Hours'"+":" + hours +","+"\n"+"'PlayersAccepted':[]," + "\n" + "'PlayersAcceptedRole':[],"+ "\n"+"'PlayersNotSure':[],"+"\n" + " 'PlayersNotSureRole':[] "
     + "\n" +"}";
-    fs.writeFile('./Events/'name + '.txt', text, (err) => {
+    fs.writeFile('./Events/'name + '.json', text, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
@@ -33,7 +33,7 @@ client.on("message", (message) => {
     const args = message.content.split(/\s+/g);
     let name = args[1];
     // delete the json file
-fs.unlink('/Events/'+name'.txt', function(error) {
+fs.unlink('/Events/'+name'.json', function(error) {
     if (error) {
         throw error;
     }
