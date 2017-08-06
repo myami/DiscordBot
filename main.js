@@ -72,4 +72,3 @@ fs.unlink('/Events/'+name'.txt', function(error) {
 
 
 });
-});
