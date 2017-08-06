@@ -18,10 +18,10 @@ client.on("message", (message) => {
     if(message.author.id !== config.ownerID) return;
     const args = message.content.split(/\s+/g);
     let name = args[1];
-    let date = args[2]; // format day/month/year
+    let dates = args[2]; // format daymonthyear
     let hours = args[3]; // format 24hours
-    let text = "{'Name'"+":" + name + ","+ "\n" + "'Hours'"+":" + date + ","+"\n" +"'Hours'"+":" + hours +","+"\n"+"'PlayersAccepted':[]," + "\n" + "'PlayersAcceptedRole':[],"+ "\n"+"'PlayersNotSure':[],"+"\n" + " 'PlayersNotSureRole':[] "
-    + "\n" +"}";
+
+    let text = JSON.stringify({Name: name, date: dates,Hours: hours,PlayersAccepted:[],PlayersAcceptedRole:[],PlayersNotSure:[],PlayersNotSureRole:[]});
     fs.writeFile('./Events/'name + '.json', text, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
@@ -45,10 +45,9 @@ fs.unlink('/Events/'+name'.json', function(error) {
     let eventname = args[1];
     let playername = message.author.username;
     let role = args[2];
+    eventname.PlayersAccepted.push(playername);
+    eventname.PlayersAcceptedRole.push(role);
 
-    fs.writeFile("./" + eventname +".json", JSON.stringify(points), (err) => {
-  if (err) console.error(err)
-});
     // add in the array call "PlayersAccepted" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
     message.channel.send("Player :" + playername + "Join the event: " + eventname);
   }
@@ -57,6 +56,9 @@ fs.unlink('/Events/'+name'.json', function(error) {
     const args = message.content.split(/\s+/g);
     let eventname = args[1];
     let role = args[2];
+    let playername = message.author.username;
+    eventname.PlayersNotSure.push(playername);
+    eventname.PlayersNotSureRole.push(role);
     // add in the array call "PlayersNotSure" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
     message.channel.send("Player :" + message.author.username + "Join the event " + eventname + "as undecided");
   }
@@ -64,8 +66,8 @@ fs.unlink('/Events/'+name'.json', function(error) {
   if(message.content.startsWith(config.prefix + "Read")) { // !Read NomDelevent
     const args = message.content.split(/\s+/g);
     let eventname = args[1];
-    // return on the chat the json file
-    message.channel.send("");
+    let JSON.parse
+    message.channel.send("Event : "+ eventname.Name+ eventname.Date + eventname.Hours + eventname.PlayersAccepted + eventname.PlayersAcceptedRole + eventname.PlayersNotSure + eventname.PlayersNotSureRole);
   }
 
 
