@@ -15,27 +15,28 @@ client.on("message", (message) => {
   if (!message.content.startsWith(config.prefix)) return;
 
   if (message.content.startsWith(config.prefix + "CreateEvent")) { // !CreateEvent NomDelevent Date Heure
-    if(message.author.id !== config.ownerID) return;
+  //  if(message.author.id !== config.ownerID) return;
     const args = message.content.split(/\s+/g);
     let name = args[1];
-    let dates = args[2]; // format daymonthyear
+    let datess = args[2]; // format daymonthyear
     let hours = args[3]; // format 24hours
-
-    let text = JSON.stringify({Name: name, date: dates,Hours: hours,PlayersAccepted:[],PlayersAcceptedRole:[],PlayersNotSure:[],PlayersNotSureRole:[]});
-    fs.writeFile('./Events/'name + '.json', text, (err) => {
+    let text = JSON.stringify({Name: name, dates: datess,Hours: hours,PlayersAccepted:[],PlayersAcceptedRole:[],PlayersNotSure:[],PlayersNotSureRole:[]});
+    fs.writeFile('./Events/' + name + '.json', text, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
-    message.channel.send("Event Created Call: " + name + "The :"+ date + "At: " + hours);
+    message.channel.send("Event Created Call: " + name + " The :"+ datess + " At: " + hours + "Hours");
   } else
   if (message.content.startsWith(config.prefix + "DeleteEvent")) { // !DeleteEvent NomDelevent
     if(message.author.id !== config.ownerID) return;
     const args = message.content.split(/\s+/g);
     let name = args[1];
     // delete the json file
-fs.unlink('/Events/'+name'.json', function(error) {
+    fs.unlink('./Events/' + name + '.json', function(error) {
     if (error) {
         throw error;
+        console.log('The file has been deleted!');
+
     }
 });
     message.channel.send("Events : " + name + "As been deleted");
@@ -45,6 +46,7 @@ fs.unlink('/Events/'+name'.json', function(error) {
     let eventname = args[1];
     let playername = message.author.username;
     let role = args[2];
+    console.log(playername);
     eventname.PlayersAccepted.push(playername);
     eventname.PlayersAcceptedRole.push(role);
 
@@ -66,7 +68,6 @@ fs.unlink('/Events/'+name'.json', function(error) {
   if(message.content.startsWith(config.prefix + "Read")) { // !Read NomDelevent
     const args = message.content.split(/\s+/g);
     let eventname = args[1];
-    let JSON.parse
     message.channel.send("Event : "+ eventname.Name+ eventname.Date + eventname.Hours + eventname.PlayersAccepted + eventname.PlayersAcceptedRole + eventname.PlayersNotSure + eventname.PlayersNotSureRole);
   }
 
