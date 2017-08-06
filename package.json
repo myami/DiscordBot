@@ -1,0 +1,11 @@
+{
+  "name": "DiscordEventBot",
+  "version": "0.0.1",
+  "description": "A bot for discord usefull for MMORPG",
+  "author": "Myami",
+  "license": "MIT",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "*",
+  }
+}
