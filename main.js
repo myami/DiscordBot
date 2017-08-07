@@ -25,7 +25,9 @@ client.on("message", (message) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
-    message.channel.send("Event Created Call: " + name + " The : "+ datess + " At: " + hours + " Hours");
+    message.channel.send("Event Created Call: " + " ' " + name +  + " ' " + " The : "+ datess + " At: " + hours + " Hours");
+    message.channel.send("Done !!!! ");
+
   } else
   if(message.content.startsWith(config.prefix + "Accepted")) { // !Accepted NomDelevent Role
     const args = message.content.split(/\s+/g);
@@ -42,10 +44,12 @@ client.on("message", (message) => {
       console.log('The file has been saved!');
     });
     // add in the array call "PlayersAccepted" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
-    message.channel.send("Player : " + playername + " Join the event: " + eventname + " As : " + role);
+    message.channel.send("Player : " + playername + " Join the event: " + " ' " + eventname + " ' " + " As : " + role);
+    message.channel.send("Done !!!! ");
+
   }
   else
-  if(message.content.startsWith(config.prefix + "Undecided")) { // !NotSure NomDelevent Role
+  if(message.content.startsWith(config.prefix + "Undecided")) { // !Undecided NomDelevent Role
     const args = message.content.split(/\s+/g);
 
     let eventname = args[1];
@@ -59,7 +63,9 @@ client.on("message", (message) => {
       console.log('The file has been saved!');
     });
     // add in the array call "PlayersNotSure" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
-    message.channel.send("Player : " + message.author.username + " Join the event " + eventname + " as undecided" + " As : " + role);
+    message.channel.send("Player : " + message.author.username + " Join the event " + " ' " + eventname +" ' " + " as undecided" + " As : " + role);
+    message.channel.send("Done !!!! ");
+
   }
   else
   if(message.content.startsWith(config.prefix + "Read")) { // !Read NomDelevent
@@ -77,9 +83,23 @@ client.on("message", (message) => {
     for (i = 0; i < jsonFile.PlayersNotSure.length; i++) {
     message.channel.send("" + JSON.stringify(jsonFile.PlayersNotSure[i]) + " " +JSON.stringify(jsonFile.PlayersNotSureRole[i]));
     }
+    message.channel.send(" Done !!!"); // they are a limit of message per second the bot can post so like that we know when he as done
+  }
+
+  if(message.content.startsWith(config.prefix + "Commands")) { // !Commands
+    message.channel.send("The commands are : ");
+    message.channel.send("1/ !CreateEvent NameofTheEvent Date Hours");
+    message.channel.send("2/ !Accepted NameofTheEvent Role");
+    message.channel.send("3/ !Undecided NameofTheEvent Role");
+    message.channel.send("4/ !Read NameofTheEvent");
+    message.channel.send("5/ !Commands");
+
+    message.channel.send("You can choice 3 Role : Dps,Heal,Tank");
+    message.channel.send("For delete an event or change is content go into the bot folder call 'Events' and change or delete the .json file with the name of the event");
+    message.channel.send("Everytime you do a commands you will get a message 'Done !!!!' to confirm it's made ");
+    message.channel.send("Done !!!! ");
 
 
-  //  message.channel.send("" + JSON.stringify(jsonFile));
   }
 
 
