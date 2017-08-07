@@ -47,9 +47,14 @@ client.on("message", (message) => {
     let playername = message.author.username;
     let role = args[2];
     console.log(playername);
-    eventname.PlayersAccepted.push(playername);
-    eventname.PlayersAcceptedRole.push(role);
+    const jsonFile = require('./Events/' + eventname + '.json');
+    jsonFile.PlayersAccepted.push(playername);
+    jsonFile.PlayersAcceptedRole.push(role);
 
+    fs.writeFile('./Events/' + eventname + '.json', JSON.stringify(jsonFile), (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    });
     // add in the array call "PlayersAccepted" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
     message.channel.send("Player :" + playername + "Join the event: " + eventname);
   }
@@ -59,8 +64,13 @@ client.on("message", (message) => {
     let eventname = args[1];
     let role = args[2];
     let playername = message.author.username;
-    eventname.PlayersNotSure.push(playername);
-    eventname.PlayersNotSureRole.push(role);
+    const jsonFile = require('./Events/' + eventname + '.json');
+    jsonFile.PlayersNotSure.push(playername);
+    jsonFile.PlayersNotSureRole.push(role);
+    fs.writeFile('./Events/' + eventname + '.json', JSON.stringify(jsonFile), (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    });
     // add in the array call "PlayersNotSure" on the correct json file the username and the role on the PlayersAcceptedRole (should have the same index)
     message.channel.send("Player :" + message.author.username + "Join the event " + eventname + "as undecided");
   }
@@ -68,7 +78,8 @@ client.on("message", (message) => {
   if(message.content.startsWith(config.prefix + "Read")) { // !Read NomDelevent
     const args = message.content.split(/\s+/g);
     let eventname = args[1];
-    message.channel.send("Event : "+ eventname.Name+ eventname.Date + eventname.Hours + eventname.PlayersAccepted + eventname.PlayersAcceptedRole + eventname.PlayersNotSure + eventname.PlayersNotSureRole);
+    const jsonFile = require('./Events/' + eventname + '.json');
+    message.channel.send("" + JSON.stringify(jsonFile));
   }
 
 
