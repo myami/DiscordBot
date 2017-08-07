@@ -2,7 +2,16 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs")
-
+ // TODO: Make on the config.json the role by default : Dps,Tank,Heal . But people can change them on it .
+ // TODO: Avoid one player can register multiple time to an event .
+ // TODO: A way to remove someone on the list with a command like " !Remove NameofTheEvent NameOfThePlayer " (taking the index of the player and remove the role).
+ // TODO: A simple way to export for googlesheet .
+ // TODO: Do a translate.json file to have commands and message in different language .
+ // TODO: Simple way to transform the data to an html file for download and have a better view(Can replace googlesheet if didn't succed to made it work)
+ // TODO: Simple integration to website  .
+ // TODO: A way to add DKP or loot system to it (for MMORPG ).
+ // TODO: Add Mysql option ?
+ // TODO: Clean Code.
 client.login(config.token);
 
 client.on("ready", () => {
