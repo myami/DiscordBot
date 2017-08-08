@@ -1,24 +1,15 @@
 {
-  "name": "discordbot",
+  "name": "discordbotv2",
   "version": "1.0.0",
-  "description": "Commands :\r ##### Create an event\r > !CreateEvent NameofTheEvent Date Hours\r ##### Delete an event\r > !DeleteEvent NameofTheEvent\r ##### Join an event as accepted with a role (Like Dps,Tank,Heal)\r > !Accepted NameofTheEvent Role\r ##### Join an event as undecided with a role (Like Dps,Tank,Heal)\r > !Undecided NameofTheEvent Role\r ##### Show all the information of the event(Name,Date,hours,PlayersAccepted and they're role , player undecided and they're role)\r > !Read NameofTheEvent",
+  "description": "",
   "main": "main.js",
-  "dependencies": {
-    "discord.js": "^11.1.0",
-    "snekfetch": "*"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/myami/DiscordBot.git"
-  },
   "author": "Myami",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/myami/DiscordBot/issues"
-  },
-  "homepage": "https://github.com/myami/DiscordBot#readme"
+  "dependencies": {
+    "discord.js": "^11.1.0",
+    "lowdb": "^0.16.2"
+  }
 }

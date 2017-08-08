@@ -1,0 +1,16 @@
+{
+  "role": {
+    "ro": "tank",
+    "ro": "dps",
+    "ro": "heal"
+  },
+  "events": [
+    {
+      "name": "test",
+      "date": "08082017",
+      "hours": "21",
+      "playeraccepted": [],
+      "playerundecided": []
+    }
+  ]
+}
