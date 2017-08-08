@@ -1,5 +1,4 @@
 {
-  "token": "insert-bot-token-here",
-  "prefix": "!",
-  "Role": ["DPS","TANK","HEAL","Invalid"]
+  "token": "TOKENBOTHERE",
+  "prefix": "!"
 }

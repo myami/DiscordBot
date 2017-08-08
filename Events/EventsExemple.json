@@ -1,9 +1,0 @@
-{
-  "Name": "NameofTheEvent",
-  "Date":"Day/Month/Year",
-  "Hours": "24",
-  "PlayersAccepted":[],
-  "PlayersAcceptedRole":[],
-  "PlayersNotSure": [],
-  "PlayersNotSureRole":[]
-}

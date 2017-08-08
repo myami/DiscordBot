@@ -13,4 +13,4 @@ Commands :
 ##### Show all the information of the event(Name,Date,hours,PlayersAccepted and they're role , player undecided and they're role)
 > !Read NameofTheEvent
 
-#### You can choice the role allowed in the config.json file
+#### You can choice the role allowed in the events/db.json file and then acces to all the event create
